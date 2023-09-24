@@ -9,7 +9,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Box',
-  data () {
+  data() {
     return {
       estilos: {
         backgroundColor: '#FAF0CA'

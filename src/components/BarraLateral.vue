@@ -6,6 +6,22 @@
         <button class="button" @click="alterarTema" :style="buttonStyle">
             {{ textoBotao }}
         </button>
+        <nav class="panel mt-5">
+            <ul>
+                <li>
+                    <router-link to="/" class="link">
+                        <i class="fas fa-tasks"></i>
+                        tarefas
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/projetos" class="link">
+                        <i class="fas fa-project-diagram"></i>
+                        projetos
+                    </router-link>
+                </li>
+            </ul>
+        </nav>
     </header>
 </template>
 
@@ -29,18 +45,15 @@ export default defineComponent({
             },
         };
     },
-    computed: {
-        textoBotao() {
-            if (this.modoEscuroAtivo) {
-                return "Dark mode ON";
-            }
-            return "Dark mode OFF";
-        },
-    },
     methods: {
         alterarTema() {
             this.modoEscuroAtivo = !this.modoEscuroAtivo;
             this.$emit("aoTemaAlterado", this.modoEscuroAtivo);
+        },
+    },
+    computed: {
+        textoBotao(): string {
+            return this.modoEscuroAtivo ? 'Dark mode ON' : 'Dark mode OFF'
         },
     },
 });
@@ -54,10 +67,26 @@ header {
     height: 100vh;
     text-align: center;
 }
+
 @media (max-width: 768px) {
     header {
         padding: 2.5rem;
         height: auto;
     }
 }
-</style>
+
+.panel li {
+    margin: 8px 0;
+}
+
+.link {
+    color: #fff;
+}
+
+.link:hover {
+    color: #FAF0CA;
+}
+
+.link.router-link-active {
+    color: #FAF0CA;
+}</style>
